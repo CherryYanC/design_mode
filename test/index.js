@@ -19,3 +19,36 @@ let func = function (a,b,c,d) {
 }.bind(obj, 1, 2)
 
 func(3,4)
+
+
+/**
+ * ---------------------------------------
+ * 命令模式
+ */
+
+const Tv = {
+    open: function () {
+        console.log('打开电视机')
+    },
+    close: function () {
+        console.log('关闭电视机')
+    }
+}
+
+class TvCommand {
+    constructor(Tv) {
+        this.Tv = Tv
+
+    }
+    execute() {
+        this.Tv.open()
+    }
+    undo() {
+        this.Tv.close()
+    }
+}
+
+const manager = new TvCommand(Tv)
+
+manager.execute()
+manager.undo()
